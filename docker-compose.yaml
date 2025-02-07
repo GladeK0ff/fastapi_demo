@@ -1,0 +1,18 @@
+services:
+  anton_sosal:
+    depends_on:
+      postgres:
+        condition: service_started
+    build: .
+    ports:
+      - "8000:8000"
+  postgres:
+    image: postgres:15.10
+    environment:
+      POSTGRES_DB: "products" 
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+  
+  
